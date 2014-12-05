@@ -1,6 +1,8 @@
 import os
 import sys
 
+import sublime
+
 from package_control import sys_path
 from package_control.unicode import unicode_from_os
 from package_control.console_write import console_write
