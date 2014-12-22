@@ -33,7 +33,7 @@ if sublime.platform() == 'linux':
         except (ImportError):
             console_write(u'Linux SSL: ssl module import error - %s' % unicode_from_os(e))
             sys_path.remove(lib_path)
-            continues
+            continue
 
         break
 
