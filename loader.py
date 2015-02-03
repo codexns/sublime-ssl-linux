@@ -22,7 +22,7 @@ if sublime.platform() == 'linux':
             import _ssl
             console_write(u'Linux SSL: successfully loaded _ssl module for libssl.so.%s' % ssl_ver)
 
-        except (ImportError):
+        except (ImportError) as e:
             console_write(u'Linux SSL: _ssl module import error - %s' % unicode_from_os(e))
             sys_path.remove(lib_path)
             continue
@@ -30,7 +30,7 @@ if sublime.platform() == 'linux':
         try:
             import ssl
 
-        except (ImportError):
+        except (ImportError) as e:
             console_write(u'Linux SSL: ssl module import error - %s' % unicode_from_os(e))
             sys_path.remove(lib_path)
             continue
