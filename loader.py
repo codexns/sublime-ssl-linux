@@ -9,7 +9,7 @@ from package_control.console_write import console_write
 
 
 
-if sublime.platform() == 'linux':
+if sublime.platform() == 'linux' and int(sublime.version()) < 3109:
     dep_paths = sys_path.generate_dependency_paths(u'ssl-linux')
 
     sys_path.add(dep_paths['plat'], first=True)
@@ -36,17 +36,3 @@ if sublime.platform() == 'linux':
             continue
 
         break
-
-    if sys.version_info < (3,):
-        if 'httplib' in sys.modules:
-            console_write(u'Linux SSL: unloading httplib module so ssl will be available')
-            del sys.modules['httplib']
-    else:
-        if 'http' in sys.modules:
-            console_write(u'Linux SSL: unloading http module so ssl will be available')
-            del sys.modules['http']
-            del sys.modules['http.client']
-        if 'urllib' in sys.modules:
-            console_write(u'Linux SSL: unloading urllib module so ssl will be available')
-            del sys.modules['urllib']
-            del sys.modules['urllib.request']
